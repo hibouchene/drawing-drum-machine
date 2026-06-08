@@ -34,6 +34,10 @@ You have two options:
 
 - Or you can go to my website [here](https://www.jessyasselineau.fr/ddm)
 
+## I want to pimp it
+
+Just clone the repo and use the _base_ example, it has the very basic blocks of CSS to custom.
+
 ## How to rave on
 
 - Add a channel with the "+" symbol
