@@ -10,7 +10,11 @@ It comes as web components for reusability and modularity so you can build your 
 
 ## How can I use it
 
-You just have to load the library, put the different parts in your html file and voilà !
+You need nodejs to use it locally, see how to install it [here](https://nodejs.org/fr/download)
+
+Install it from the node repository with ```npm i drawing-drum-machine```
+
+Then, you just have to load the library, put the different parts in your html file and voilà !
 
 ```import "drawing-drum-machine"```
 
