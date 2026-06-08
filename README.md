@@ -1,3 +1,5 @@
+![screenshot](screenshot.jpg)
+
 # Drawing Drum Machine
 ## Monorepo containing the source of drawing-drum-machine npm package and some examples
 
