@@ -1,0 +1,114 @@
+:root{
+    --buttons-size: 30px;
+    --step-color: #e100ff;
+    --step-border-size: 1px;
+    --tabs-width: 20%;
+    --editors-width: 50%;
+    --editors-height:90%;
+    --channels-width:70%;
+    --channels-height: 50%;
+}
+
+/*Feed*/
+
+.ddm-container{
+    width: 50%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+ddm-main{
+    display:inline-block;
+    height:50%;
+    position:relative;
+    
+}
+
+video{
+    height:100%;
+    display:block;
+}
+
+.step{
+    width: 25%;
+    height:25%;
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    border: var(--step-border-size) solid var(--step-color);
+    box-sizing: border-box;
+}
+
+/*Editors*/
+
+ddm-channels{
+    display:flex;
+    flex-direction: column;
+    width: var(--channels-width);
+    height: var(--channels-height);
+}
+
+ddm-channels textarea{
+    position: absolute;
+    resize: none;
+    visibility:hidden;
+    pointer-events: none;
+    width: var(--editors-width);
+    height: var(--editors-height);
+    resize:none;
+}
+
+ddm-channels .editors .selected{
+    visibility:visible;
+    pointer-events:all;
+}
+
+ddm-channels .editors {
+    display:block;
+    position:relative;
+    width:100%;
+    flex: 10;
+}
+
+/*Channels*/
+
+ddm-channels .tabs{
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    flex: 1;
+}
+
+ddm-channels .tabs .selected{
+    transform: scale(1.3);
+}
+
+.button{
+    width: var(--buttons-size);
+    height:var(--buttons-size);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    user-select:none;
+    font-size: 36px;
+}
+
+/*Options*/
+
+
+/*Additionnal theme structure*/
+
+html, body{
+    margin:0;
+    width:100%;
+    height: 100%;
+}
+
+#app{
+    width:100%;
+    height:100%;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "drawing-drum-machine-examples",
+  "version": "1.0.0",
+  "description": "Ready-to-use UI for drawing drum machine",
+  "license": "ISC",
+  "author": "Jessy Asselineau",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "base": "vite --config ./base/vite.config.ts",
+    "hannah": "vite --config ./hannah/vite.config.ts"
+  },
+  "dependencies": {
+    "drawing-drum-machine": "^1.0.1",
+    "vite": "^8.0.16"
+  }
+}

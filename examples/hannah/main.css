@@ -1,0 +1,266 @@
+:root{
+    --buttons-size: 30px;
+    --step-color: #e100ff;
+    --step-border-size: 1px;
+    --tabs-width: 20%;
+    --editors-width: 100%;
+    --editors-height:100%;
+    --channels-width:100%;
+    --channels-height: 100%;
+}
+
+/*Feed*/
+
+.ddm-container{
+    width: 50%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+ddm-main{
+    display:inline-block;
+    height:100%;
+    position:relative;
+    width:100%;
+    pointer-events:all;
+}
+
+video{
+    height:100%;
+    display:block;
+}
+
+.step{
+    width: 25%;
+    height:25%;
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    border: var(--step-border-size) solid var(--step-color);
+    box-sizing: border-box;
+    pointer-events:none;
+    border-radius:20px;
+}
+
+/*Editors*/
+
+ddm-channels{
+    display:flex;
+    flex-direction: column;
+    width: var(--channels-width);
+    height: var(--channels-height);
+    
+}
+
+ddm-channels textarea{
+    position: absolute;
+    resize: none;
+    visibility:hidden;
+    pointer-events: none;
+    width: var(--editors-width);
+    height: var(--editors-height);
+    resize:none;
+    border-radius:20px;
+    box-sizing: border-box;
+    padding:30px;
+    border: none;
+    font-size:30px;
+    font-family: Meyrin;
+    color: var(--step-color)
+}
+
+ddm-channels textarea:focus{
+    border: 2px solid var(--step-color);
+}
+
+ddm-channels .editors .selected{
+    visibility:visible;
+    pointer-events:all;
+}
+
+ddm-channels .editors {
+    display:block;
+    position:relative;
+    width:100%;
+    flex: 10;
+}
+
+/*Channels*/
+
+ddm-channels .tabs{
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    flex: 1;
+}
+
+ddm-channels .tabs .selected{
+    transform: scale(1.3);
+}
+
+.button{
+    width: var(--buttons-size);
+    height:var(--buttons-size);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    user-select:none;
+    font-size: 36px;
+    color: var(--step-color);
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+/*Options*/
+
+
+/*Additionnal theme structure*/
+
+
+html, body{
+    width: 100dvw;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-size:cover;
+    filter: saturate(100%);
+}
+
+/*STRUCTURE*/
+
+#app{
+    width: 80%;
+    height: 80%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:30px;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #E0E0E0;
+    padding: 20px;
+    position:relative;
+    pointer-events:none;
+}
+
+
+#left{
+    aspect-ratio:1/1;
+    pointer-events: none;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+#right{
+    flex:2;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    pointer-events:all;
+}
+
+.section{
+    height:100%;
+}
+
+#bgvid-container{
+    background-size:cover;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    z-index:-1;
+}
+
+.bg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position:absolute;
+}
+
+#params{
+    position:absolute;
+    right:0;
+    font-size:16px;
+    top:10px;
+}
+
+#title-left{
+    flex:7;
+}
+
+#title-right{
+    flex:3;
+    position:relative;
+    display:flex;
+    gap:20px;
+}
+
+#title-container{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+}
+
+#editor{
+    width:100%;
+    height:100%;
+}
+
+/*TYPOGRAPHY*/
+
+@font-face {
+    font-family: Meyrin;
+    src: url("../assets/fonts/Meyrin.woff") format("woff");
+}
+
+@font-face {
+    font-family: Ductus;
+    src: url("../assets/fonts/DuctusMonoGeometric.woff2") format("woff2");
+}
+
+.title{
+    color: #F200FF;
+    font-family: Ductus;
+}
+
+#big{
+    margin:0;
+    font-size: 28px;
+    display:inline-block;
+}
+
+#small{
+    margin:0;
+    font-size: 16px;
+    display: block;
+    width:100%;
+}
+
+#params label{
+    font-family: Ductus;
+    color: #6D6D6D;
+}
+
+#tempo{
+    width:50px;
+    font-family: Ductus;
+    background-color:#F200FF;
+    border:none;
+    color:white;
+    border-radius: 10px;
+    text-align: center;
+    font-size:16px;
+    pointer-events:all;
+}
