@@ -52,9 +52,39 @@ If your theme slay af, you can make a pull request to add it to the examples fol
 - DANCE
 - Repeat for any new color-instrument you want
 
+## Hidden powers
+
+### bpm
+
+You can set the bpm programaticaly by using the tempo property of the ddm. Like this :
+
+_html_
+
+```
+<ddm main id="ddm"></ddm>
+```
+
+_js_
+
+```
+const ddm = getDocumentById("ddm");
+ddm.tempo = <your-value> (as number)
+```
+
+It can be cool when paired with a text field to set it on the fly during your live. See examples/hannah for the code.
+
 ## How to contribute
 
 As I'm not really a developer myself, ask for features if you are not too, or make some pull requests if you are kind and strong. I will ensure to keep it up to date as long as I can.
+
+### What to do / What is coming
+
+- Save and load patches, to make the rave (litteraly) memorable
+- Allow the refresh function to be triggered not only by CTRL+S, allowing mobile users to use it too
+
+## How to support
+
+You can tip me on ko-fi to help me to maintain this repo, or to eat sometimes.
 
 ## License
 This library is distributed by the terms of the Hippocratic License version 3.0. 
