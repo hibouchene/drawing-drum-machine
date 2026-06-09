@@ -73,6 +73,14 @@ ddm.tempo = <your-value> (as number)
 
 It can be cool when paired with a text field to set it on the fly during your live. See examples/hannah for the code.
 
+### samples
+
+You can add samples from github with the samples attribute of ddm-main. You have to separate them with a semicolon :
+
+```
+<ddm-main samples="github:foo/bar; github:a/cab">
+```
+
 ## How to contribute
 
 As I'm not really a developer myself, ask for features if you are not too, or make some pull requests if you are kind and strong. I will ensure to keep it up to date as long as I can.
