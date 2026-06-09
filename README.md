@@ -61,7 +61,7 @@ You can set the tempo programaticaly by using the tempo property of the ddm. Lik
 _html_
 
 ```
-<ddm main id="ddm"></ddm>
+<ddm-main id="ddm"></ddm-main>
 ```
 
 _js_
