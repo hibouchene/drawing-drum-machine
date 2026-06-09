@@ -84,7 +84,7 @@ As I'm not really a developer myself, ask for features if you are not too, or ma
 
 ## How to support
 
-You can tip me on ko-fi to help me to maintain this repo, or to eat sometimes.
+You can [tip me on ko-fi](https://ko-fi.com/jessyasselineau) to help me to maintain this repo, or to eat sometimes.
 
 ## License
 This library is distributed by the terms of the Hippocratic License version 3.0. 
