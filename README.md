@@ -54,9 +54,9 @@ If your theme slay af, you can make a pull request to add it to the examples fol
 
 ## Hidden powers
 
-### bpm
+### tempo
 
-You can set the bpm programaticaly by using the tempo property of the ddm. Like this :
+You can set the tempo programaticaly by using the tempo property of the ddm. Like this :
 
 _html_
 
