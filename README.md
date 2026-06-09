@@ -1,12 +1,12 @@
 ![screenshot](screenshot.jpg)
 
+<a href="https://ko-fi.com/jessyasselineau"><img src="support.png" alt="drawing" width="180"/></a>
+
 # Drawing Drum Machine
-## Monorepo containing the source of drawing-drum-machine npm package and some examples
+**Video-based Strudel editor**
 
 ## Wtf is that
-The drawing drum machine is a strudel live editor that uses a live feed to trigger sounds.
-
-You can see it like a **vjing meets live coding environement**
+The drawing drum machine is a strudel live editor that uses a live video feed to trigger sounds.
 
 It comes as web components for reusability and modularity so you can build your custom ui.
 
@@ -16,17 +16,17 @@ You need nodejs to use it locally, see how to install it [here](https://nodejs.o
 
 Install it from the node repository with ```npm i drawing-drum-machine```
 
-Then, you just have to load the library, put the different parts in your html file and voilà !
+Then, you just have to load the library, put the different parts in your html file, and voilà !
 
 ```import "drawing-drum-machine"```
 
 How it works : 
 
-```<ddm-main>``` contains the image processing and live feed part
+- ```<ddm-main>``` contains the image processing and live feed part
 
-```<ddm-channels>``` contains the channels UI : adding, modifying values, removing, writing code
+- ```<ddm-channels>``` contains the channels UI : adding, modifying values, removing, writing code
 
-You have to put these two components in your dom otherwise the drawing drum machine will not run. And you'll be sad.
+You have to put these two components in your dom and set a width-height to the ddm-main component otherwise the drawing drum machine will not run. And you'll be sad.
 
 ## I want it NOW
 
@@ -39,6 +39,8 @@ You have two options:
 ## I want to pimp it
 
 Just clone the repo and use the _base_ example, it has the very basic blocks of CSS to custom.
+
+If your theme slay af, you can make a pull request to add it to the examples folder.
 
 ## How to rave on
 
