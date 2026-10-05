@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
+import { localLib } from '../vite.local';
 
-  export default defineConfig({
-    root: "./base"
-  });
+export default defineConfig(({ mode }) => ({
+  root: "./base",
+  ...localLib(mode)
+}));

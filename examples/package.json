@@ -8,7 +8,9 @@
   "main": "index.js",
   "scripts": {
     "base": "vite --config ./base/vite.config.ts",
-    "hannah": "vite --config ./hannah/vite.config.ts"
+    "hannah": "vite --config ./hannah/vite.config.ts",
+    "dev:base": "vite --config ./base/vite.config.ts --mode lib",
+    "dev:hannah": "vite --config ./hannah/vite.config.ts --mode lib"
   },
   "dependencies": {
     "drawing-drum-machine": "^1.0.1",

@@ -8,13 +8,64 @@ import { initStrudel, samples, getAudioContext, evaluate } from '@strudel/web';
 import Channels from "./channels";
 import FeedProcessor from "./feedProcessor";
 
+interface AutoOptions{
+    enabled?: boolean,
+    refresh_rate?: number
+}
 
 class DDM extends HTMLElement{
     cpm: number = 120;
     audioContext: AudioContext | undefined
+    scheduler: any | undefined
+    _steps: number = 0
+    auto: AutoOptions = {
+        enabled: false,
+        refresh_rate: 16
+    }
+    channels: Channels | undefined
+    processor: FeedProcessor | undefined
 
     constructor(){
+
         super();
+
+    }
+
+    /** Gets the current step */
+    get step(){
+        
+        if(!this.scheduler) throw new Error("Strudel scheduler is not defined");
+
+        const now = this.scheduler.getTime();
+
+        const secondsAtChange = this.scheduler.seconds_at_cps_change;
+        const cyclesAtChange = this.scheduler.num_cycles_at_cps_change;
+        const currentCPS = this.scheduler.cps;
+
+        const absoluteCycle = cyclesAtChange + (now - secondsAtChange) * currentCPS;
+
+        const currentStep = Math.floor((absoluteCycle % 1) * 16);
+
+        return currentStep;
+
+    }
+
+    /** Gets all steps since start */
+    get steps(){
+
+        return this._steps;
+
+    }
+
+    set tempo(value: number){
+
+        this.cpm = value;
+
+    }
+
+    set autorate(value: number){
+
+        this.auto.refresh_rate = value;
 
     }
 
@@ -26,7 +77,7 @@ class DDM extends HTMLElement{
 
         const samplesAttribute = this.getSamples();
 
-        let processor: FeedProcessor;
+        //let processor: FeedProcessor;
 
         /**
          * Init strudel with specified samples then launch the animation loop of step (see start method)
@@ -45,10 +96,16 @@ class DDM extends HTMLElement{
             },
         }).then((strudel) => this.start(strudel, step));
 
+        const auto_rate = this.getAttribute("autorate");
+
+        if(auto_rate) this.auto.refresh_rate = Number(auto_rate);
+
         //Checks if all required web components are in place in the DOM
         const channels = Channels.instance;
 
         if(!channels) throw new Error("There is no channels");
+
+        this.channels = channels;
 
         /**
          * The video element that will show the video feed
@@ -59,25 +116,29 @@ class DDM extends HTMLElement{
 
             this.audioContext = getAudioContext();
 
-            processor = new FeedProcessor(video);
+            this.processor = new FeedProcessor(video);
 
              //User CTRL+S event for getting image data and evaluate sound from its computed sequence
             window.addEventListener("keydown", (e) => {
 
+                    //To avoid the default keyboard events
+                   
                     if(e.key === "s" && e.ctrlKey){
 
-                        //To avoid the default save window
-                        e.preventDefault();
+                         e.preventDefault();
+                        //Interrupts auto refresh
+                        if(this.auto.enabled) this.auto.enabled = false;
 
-                        //We the sequence (async) and use it for strudel evaluation (see refresh method)
-                        processor.seq(channels).then((seq) => {
-
-                            const struct = this.codesToStruct(seq, channels.values)
-
-                            this.refresh(struct);
-
-                        });
+                        this.update();
                         
+
+                    }
+
+                    if(e.key === "d" && e.ctrlKey){
+
+                         e.preventDefault();
+
+                        if(!this.auto.enabled) this.auto.enabled = true;
 
                     }
 
@@ -129,6 +190,26 @@ class DDM extends HTMLElement{
 
     }
 
+    update(){
+
+            if(!this.processor) throw new Error("Update failed: FeedProcessor is not defined");
+            if(!this.channels) throw new Error("Update failed : Channels are not defined");
+
+            //Gets the sequence (async) and uses it for strudel evaluation (see refresh method)
+            this.processor.seq(this.channels).then((seq) => {
+            
+                if(this.channels){
+
+                    const struct = this.codesToStruct(seq, this.channels.values)
+
+                    this.refresh(struct);
+
+                }
+
+        });
+
+    }
+
     /**
      * 
      * @param seq The sequence as an Array of formated strings for strudel pattern
@@ -151,6 +232,15 @@ class DDM extends HTMLElement{
         )
         `
         evaluate(stack);
+
+    }
+
+    /**Refreshes each n steps */
+    autorefresh(){
+
+        if(this.auto.refresh_rate && this.steps % this.auto.refresh_rate == 0){
+            this.update();
+        }
 
     }
 
@@ -178,13 +268,17 @@ class DDM extends HTMLElement{
         
         const scheduler = strudel.scheduler;
 
+        this.scheduler = scheduler;
+
         let lastStep = -1;
 
         const loop = () => {
 
-            const currentStep  = this.calcCurrentStep(scheduler);
+            const currentStep  = this.step;
 
-            if (currentStep !== lastStep) {
+            if (currentStep !== lastStep && currentStep >= 0) {
+            this._steps++;
+            if(this.auto.enabled) this.autorefresh();
             lastStep = currentStep;
 
             const col = currentStep % 4;
@@ -201,27 +295,6 @@ class DDM extends HTMLElement{
 
     }
 
-    calcCurrentStep(scheduler: any){
-
-        const now = scheduler.getTime();
-
-        const secondsAtChange = scheduler.seconds_at_cps_change;
-        const cyclesAtChange = scheduler.num_cycles_at_cps_change;
-        const currentCPS = scheduler.cps;
-
-        const absoluteCycle = cyclesAtChange + (now - secondsAtChange) * currentCPS;
-
-        const currentStep = Math.floor((absoluteCycle % 1) * 16);
-
-        return currentStep;
-
-    }
-
-    set tempo(value: number){
-
-        this.cpm = value;
-
-    }
 }
 
 customElements.define("ddm-main", DDM);
