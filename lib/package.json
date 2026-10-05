@@ -1,6 +1,6 @@
 {
   "name": "drawing-drum-machine",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Webcam feed audio sequencer with Strudel",
   "license": "Hippocratic License v.3.0",
   "author": "Jessy Asselineau",
