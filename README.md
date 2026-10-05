@@ -9,6 +9,7 @@
 
 - You can auto update changed each n steps using the new autorefresh() method
 - You just have to press CTRL+D to enable it, if you hit CTRL+S after, it'll stop and going back to normal mode
+- By default, it refreshes each 16 steps but you can set it in ddm-main as an attribute : ```autorate=<refresh_steps>```
 - You can now call update() method to update the strudel sequence, it can be useful if you want to link it to a button or wtf you want
 
 ## Wtf is that
