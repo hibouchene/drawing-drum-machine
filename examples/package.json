@@ -13,7 +13,7 @@
     "dev:hannah": "vite --config ./hannah/vite.config.ts --mode lib"
   },
   "dependencies": {
-    "drawing-drum-machine": "^1.0.1",
+    "drawing-drum-machine": "^1.0.6",
     "vite": "^8.0.16"
   }
 }
