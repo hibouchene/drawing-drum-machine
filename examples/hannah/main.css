@@ -222,12 +222,12 @@ body{
 
 @font-face {
     font-family: Meyrin;
-    src: url("../assets/fonts/Meyrin.woff") format("woff");
+    src: url("./assets/fonts/Meyrin.woff") format("woff");
 }
 
 @font-face {
     font-family: Ductus;
-    src: url("../assets/fonts/DuctusMonoGeometric.woff2") format("woff2");
+    src: url("./assets/fonts/DuctusMonoGeometric.woff2") format("woff2");
 }
 
 .title{
